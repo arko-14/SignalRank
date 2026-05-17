@@ -1,0 +1,1 @@
+"""People search prototype package."""
