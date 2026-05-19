@@ -71,7 +71,7 @@ OPENROUTER_EXPLANATIONS_ENABLED = (
     os.getenv("OPENROUTER_EXPLANATIONS_ENABLED", "false").strip().lower() == "true"
 )
 OPENROUTER_EXPLANATION_MODEL = os.getenv(
-    "OPENROUTER_EXPLANATION_MODEL", "openai/gpt-4o-mini"
+    "OPENROUTER_EXPLANATION_MODEL", "anthropic/claude-opus-4.7-fast"
 ).strip()
 OPENROUTER_CHAT_BASE_URL = os.getenv(
     "OPENROUTER_CHAT_BASE_URL", "https://openrouter.ai/api/v1/chat/completions"

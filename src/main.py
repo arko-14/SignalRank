@@ -133,6 +133,32 @@ def _build_openrouter_explanation_payload(
         {
             "model": config.OPENROUTER_EXPLANATION_MODEL,
             "temperature": 0,
+            "response_format": {
+                "type": "json_schema",
+                "json_schema": {
+                    "name": "debug_explanations",
+                    "strict": True,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "explanations": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "actor_id": {"type": "string"},
+                                        "explanation": {"type": "string"},
+                                    },
+                                    "required": ["actor_id", "explanation"],
+                                    "additionalProperties": False,
+                                },
+                            }
+                        },
+                        "required": ["explanations"],
+                        "additionalProperties": False,
+                    },
+                },
+            },
             "messages": [
                 {
                     "role": "system",
@@ -140,8 +166,6 @@ def _build_openrouter_explanation_payload(
                         "You write concise retrieval debug explanations. "
                         "Use only the provided metadata. "
                         "Do not invent biography details or ranking logic beyond the fields given. "
-                        "Return strict JSON with shape "
-                        '{"explanations":[{"actor_id":"...","explanation":"..."}]}. '
                         "Each explanation must be one sentence and should mention the strongest graph, tag, "
                         "or semantic match when present."
                     ),
