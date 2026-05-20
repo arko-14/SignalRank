@@ -20,6 +20,10 @@ After `docker compose up -d`, the Memgraph UI is available at:
 
 That lets a reviewer inspect the graph directly after running `python -m src.main`.
 
+Example view from Memgraph Lab after loading the graph and running a verification query:
+
+![Memgraph Lab query execution view](docs/images/memgraph-query-execution.jpeg)
+
 ## Architecture
 The retrieval flow is:
 
